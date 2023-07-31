@@ -1,0 +1,34 @@
+class Solution
+{
+    public String reverseWords(String s)
+    {
+        s=s.trim();
+        s=s.replaceAll("\\s+"," ");
+        int i=0,j=0;  
+        char[] ch=s.toCharArray();
+        while(i<=ch.length && j<=ch.length)
+        {
+            if(j==ch.length || ch[j]==' ' )
+            {
+                reverse(ch,i,j);
+                i=j+1;
+            }
+            j++;
+        }
+        reverse(ch,0,ch.length);
+        return String.valueOf(ch);
+    }
+
+    public void reverse(char[] ch, int i, int j)
+    {         
+        j=j-1;          
+        while(i<j)
+        {
+            char temp=ch[i];
+            ch[i]=ch[j];
+            ch[j]=temp;
+            i++; 
+            j--;
+        }
+    }        
+}
